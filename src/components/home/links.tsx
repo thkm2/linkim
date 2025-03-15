@@ -22,11 +22,11 @@ export default async function Links() {
 			</div>
 	)
 
-	return ( <div className="w-full md:w-1/2 mx-auto p-5 grid grid-cols-1 gap-5">
+	return ( <div className="w-full md:w-1/2 mx-auto p-5 grid grid-cols-1 gap-5 mt-28 mb-20">
 		{links.map((link) => (
 			<Card key={link.id}>
 				<CardHeader>
-					<CardTitle>{link.name}</CardTitle>
+					<CardTitle className="flex justify-between items-center">{link.name}<span className="text-sm py-1 px-2 border rounded-lg bg-primary/10 font-semibold">{link.clicked}</span></CardTitle>
 					<CardDescription>{link.description != "" ? link.description : "Ce lien n'as pas de description"}</CardDescription>
 				</CardHeader>
 				<CardFooter>

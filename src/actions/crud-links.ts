@@ -1,17 +1,17 @@
 "use server"
 
 import { drizzle } from 'drizzle-orm/neon-http'
-import { linkSchema, LinkType } from '@/db/schema'
+import { linkSchema, linkHistorySchema } from '@/db/schema'
 import { formSchema } from '@/components/home/add-link'
 import z from "zod"
 import slugify from 'slugify'
-import { eq } from 'drizzle-orm'
+import { desc, eq } from 'drizzle-orm'
 
 const db = drizzle(process.env.DATABASE_URL!)
 
 export const getLinks = async () => {
 	try {
-		const response = await db.select().from(linkSchema)
+		const response = await db.select().from(linkSchema).orderBy(desc(linkSchema.createdAt))
 		return response
 	} catch (error) {
 		throw error
@@ -39,6 +39,7 @@ export const addLinkToDb = async (data: z.infer<typeof formSchema>) => {
 
 export const deleteLinkOfDb = async (id: number) => {
 	try {
+		await db.delete(linkHistorySchema).where(eq(linkHistorySchema.linkId, id))
 		await db.delete(linkSchema).where(eq(linkSchema.id, id))
 	} catch (error) {
 		throw error
