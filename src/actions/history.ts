@@ -32,7 +32,7 @@ export const doAction = async (link: LinkType) => {
 	try {
 		await upDateLink(link.id, link.clicked! + 1)
 		await addHistoryTo(link.id, link.clicked! + 1)
-		revalidatePath("/")
+		//revalidatePath("/")
 	} catch (error) {
 		throw error
 	}
