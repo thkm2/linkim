@@ -8,8 +8,7 @@ import { ArrowLeft } from "lucide-react"
 import History from "@/components/details/history";
 
 export default async function details({ params }: {params: {slug: string}}) {
-	const resolvedParams = await params;
-	const { slug } = resolvedParams;
+	const { slug } = await params
 	const link = await getLink(slug)
 	if (!link) 
 		return notFound()
