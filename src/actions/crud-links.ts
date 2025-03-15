@@ -52,7 +52,7 @@ export const deleteLinkOfDb = async (id: number) => {
 export const upDateLink = async (id: number, newVal: number) => {
 	try {
 		await db.update(linkSchema).set({clicked: newVal}).where(eq(linkSchema.id, id))
-		revalidatePath("/")
+		//revalidatePath("/")
 	} catch (error) {
 		throw error
 	}
