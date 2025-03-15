@@ -7,7 +7,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react"
 import History from "@/components/details/history";
 
-export default async function details({ params }: {params: {slug: string}}) {
+export default async function details({ params }: {params: Promise<{ slug: string }>}) {
 	const { slug } = await params
 	const link = await getLink(slug)
 	if (!link) 
