@@ -31,10 +31,10 @@ export default function DetailsCard({ link }: { link: LinkType }) {
             <span>Lien raccourci :</span>
           </p>
           <Link
-            href={`http://localhost:3000/${link.slug}`}
+            href={`https://linkim-psi.vercel.app/${link.slug}`}
             className="py-2.5 px-4 border border-muted rounded-lg bg-muted/50 hover:bg-muted duration-150 flex items-center justify-between group w-full"
           >
-            <span>{`http://localhost:3000/${link.slug}`}</span>
+            <span>{`https://linkim-psi.vercel.app/${link.slug}`}</span>
             <ExternalLinkIcon className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
           </Link>
         </div>
