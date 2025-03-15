@@ -24,7 +24,7 @@ export default function DetailsCard({ link }: { link: LinkType }) {
           {link.description !== "" ? link.description : "Ce lien n'a pas de description"}
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex flex-col gap-4 my-5">
+      <CardContent className="flex flex-col gap-4 my-2 md:my-5">
         <div className="space-y-2">
           <p className="text-lg font-medium flex items-center gap-2">
             <LinkIcon className="size-4" />

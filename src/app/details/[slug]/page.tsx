@@ -17,7 +17,7 @@ export default async function details({ params }: {params: {slug: string}}) {
 	return (
 		<>
 			<Link href={"/"} className="absolute m-5 max-sm:hidden"><Button variant={"ghost"}><ArrowLeft/>Retour</Button></Link>
-			<div className="w-full min-h-screen flex flex-col justify-center items-center p-5 gap-12">
+			<div className="w-full min-h-screen flex flex-col justify-center items-center gap-12">
 				<DetailsCard link={link} />
 				<History link={link} />
 			</div>
