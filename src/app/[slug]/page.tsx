@@ -3,7 +3,9 @@ import { notFound } from "next/navigation";
 import { getLink } from "@/actions/crud-links";
 import { doAction } from "@/actions/history";
 
-export default async function redirectTo({ params: {slug} }: {params: {slug: string}}) {
+export default async function redirectTo({ params }: {params: {slug: string}}) {
+	const resolvedParams = await params;
+	const { slug } = resolvedParams;
 	const link = await getLink(slug)
 	if (link?.urlTo) {
 		await doAction(link)
