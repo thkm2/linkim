@@ -8,9 +8,9 @@ export default function Revalidate() {
 	useEffect(() => {
 		const reva = async () => {
 			await fetch("/api/revalidate", {method: "POST"})
+			router.refresh()
 		}
 		reva()
-		router.refresh()
 	}, [])
 	return null
 }
