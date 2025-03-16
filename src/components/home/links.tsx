@@ -1,4 +1,3 @@
-
 import {
 	Card,
 	CardDescription,
@@ -10,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Link2OffIcon } from "lucide-react"
 import { LinkType } from "@/db/schema"
+import { getLinks } from "@/actions/crud-links"
 
 export default function Links({links}: {links: LinkType[]}) {
 
