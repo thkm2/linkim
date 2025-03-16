@@ -1,6 +1,4 @@
-"use client"
 
-import { getLinks } from "@/actions/crud-links"
 import {
 	Card,
 	CardDescription,
@@ -11,19 +9,9 @@ import {
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { Link2OffIcon } from "lucide-react"
-import { useState, useEffect } from "react"
 import { LinkType } from "@/db/schema"
 
 export default function Links({links}: {links: LinkType[]}) {
-	//const [links, setLinks] = useState<LinkType[]>([])
-	// useEffect(() => {
-	// 	const getData = async () => {
-	// 		const data = await getLinks()
-	// 		setLinks(data)
-	// 	}
-	// 	getData()
-	// }, [])
-	//const links = await getLinks()
 
 	if (links?.length < 1)
 		return (
