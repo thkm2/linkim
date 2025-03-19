@@ -5,7 +5,7 @@ import { LinkType } from "@/db/schema";
 import { useState, useEffect } from "react";
 import { getLinks } from "@/actions/crud-links";
 import { useSession } from "next-auth/react";
-import { SessionProvider } from "next-auth/react";
+import { SessionProvider } from "next-auth/react"
 
 function Home() {
     const [links, setLinks] = useState<LinkType[]>([]);
