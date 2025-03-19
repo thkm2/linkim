@@ -1,9 +1,12 @@
+"use client"
+
 import AddLink from "@/components/home/add-link";
+import { SessionProvider } from "next-auth/react";
 
 export default function Add() {
-	return (
-		<div className="w-full min-h-screen flex flex-col justify-center items-center gap-20">	
-			<AddLink />
-		</div>
-	);
+    return (
+        <SessionProvider>
+            <AddLink />
+        </SessionProvider>
+    );
 }

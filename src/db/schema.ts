@@ -8,15 +8,16 @@ export const linkSchema = pgTable("link", {
   slug: text().notNull().unique(),
   urlTo: text().notNull(),
   description: text(),
-  clicked: integer().$default(() => 0)
+  clicked: integer().$default(() => 0),
+  userId: integer().notNull() // Ajout du champ userId
 });
 
 export const linkHistorySchema = pgTable("history", {
-	id: integer().primaryKey().generatedAlwaysAsIdentity(),
-	date: timestamp().notNull().defaultNow(),
-	number: integer().notNull(),
-	linkId: integer().notNull().references(() => linkSchema.id)
-  });
+    id: integer().primaryKey().generatedAlwaysAsIdentity(),
+    date: timestamp().notNull().defaultNow(),
+    number: integer().notNull(),
+    linkId: integer().notNull().references(() => linkSchema.id)
+});
 
 export type LinkType = InferSelectModel<typeof linkSchema>
 export type LinkHistoryType = InferSelectModel<typeof linkHistorySchema>

@@ -1,0 +1,1 @@
+ALTER TABLE "link" ADD COLUMN "userId" integer NOT NULL;

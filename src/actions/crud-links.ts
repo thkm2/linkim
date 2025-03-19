@@ -10,9 +10,9 @@ import { revalidatePath } from 'next/cache'
 
 const db = drizzle(process.env.DATABASE_URL!)
 
-export const getLinks = async () => {
+export const getLinks = async (userId: number) => {
 	try {
-		const response = await db.select().from(linkSchema).orderBy(desc(linkSchema.createdAt))
+		const response = await db.select().from(linkSchema).where(eq(linkSchema.userId, userId))
 		return response
 	} catch (error) {
 		throw error
@@ -24,13 +24,14 @@ export const getLink = async (slug: string) => {
 	return repsonse[0]
 }
 
-export const addLinkToDb = async (data: z.infer<typeof formSchema>) => {
+export const addLinkToDb = async (data: z.infer<typeof formSchema>, userId: number) => {
 	try {
 		const response = await db.insert(linkSchema).values({
 			name: data.name,
 			slug: slugify(data.name),
 			urlTo: data.urlTo,
-			description: data.description
+			description: data.description,
+			userId: userId
 		})
 		revalidatePath("/")
 	} catch (error) {
