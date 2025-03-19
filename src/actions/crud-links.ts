@@ -19,6 +19,15 @@ export const getLinks = async (userId: number) => {
 	}
 }
 
+export const getAllLinks = async () => {
+	try {
+		const response = await db.select().from(linkSchema)
+		return response
+	} catch (error) {
+		throw error
+	}
+}
+
 export const getLink = async (slug: string) => {
 	const repsonse = await db.select().from(linkSchema).where(eq(linkSchema.slug, slug))
 	return repsonse[0]
