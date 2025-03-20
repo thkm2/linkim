@@ -20,8 +20,8 @@ import { toast } from "sonner"
 import { useSession } from "next-auth/react"
 
 export const formSchema = z.object({
-    name: z.string().min(3).max(25),
-    urlTo: z.string().url(),
+    name: z.string().min(3, {message: "Le nom doit contenir au moins 3 caractères"}).max(25, {message: "Le nom doit contenir au maximum 25 caractères"}),
+    urlTo: z.string().url({message: "L'url est invalide"}),
     description: z.string().optional()
 })
 
